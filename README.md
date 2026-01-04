@@ -61,7 +61,3 @@ This project is provided under the **MIT License** — see `LICENSE` if you add 
 
 Dhairya Khatri
 contact details: +91 9426369041
-
----
-
-If you want, I can add a `LICENSE` file, a project demo screenshot, or a live-deploy workflow (GitHub Pages). Let me know which you'd prefer.
