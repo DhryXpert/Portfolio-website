@@ -1,63 +1,117 @@
-# Portfolio Website ✅
+# 💼 Personal Portfolio Website
 
-A simple personal portfolio website showcasing projects, skills, and contact information. Built with plain HTML, CSS, and JavaScript.
+A responsive personal portfolio website to showcase my skills, projects, certifications, and contact details.  
+Built using **HTML, CSS, and JavaScript**, focusing on simplicity, clarity, and clean UI.
+
+🔗 **Live Demo:** (Add your deployed link here)
 
 ---
 
-## 🔧 Features
+## 👋 About Me
 
-- Responsive single-page layout
-- Easy to customize sections (About, Projects, Contact)
-- No build step required — just static files
+Hi, I’m **Dhairya Khatri**, a Computer Science Engineering student with a strong interest in **backend and full-stack development**.
+
+I enjoy building real-world applications, working with APIs and databases, and improving my problem-solving skills through **Data Structures & Algorithms** and hands-on projects.
+
+---
+
+## ✨ Features
+
+- Responsive single-page design  
+- Smooth navigation between sections  
+- Skills and certifications showcase  
+- Featured projects with GitHub links  
+- Social media and contact integration  
+- No frameworks or build tools — pure web fundamentals
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript  
+- **Icons:** Font Awesome  
+- **Version Control:** Git & GitHub
+
+---
+
+## 📁 Project Structure
+
+```
+Portfolio-Website/
+│
+├── index.html      # Main HTML file
+├── styles.css      # Styling and layout
+├── script.js       # JavaScript interactions
+├── src/            # Images and assets
+└── README.md
+```
+
+---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+You can run this project locally in two simple ways.
 
-- A modern web browser (Chrome, Edge, Firefox, etc.)
-- (Optional) A static server for local testing (see options below)
+### Option 1: Open Directly
+Open `index.html` in any modern web browser.
 
-### Run locally
+### Option 2: Run Using a Local Server (Recommended)
 
-1. Clone the repo:
-
+**Using Python**
 ```bash
-git clone <repo-url>
-cd Portfolio-website
+python -m http.server 8000
+```
+Then visit:
+```
+http://localhost:8000
 ```
 
-2. Open locally
-
-- Option A: Open `index.html` directly in your browser
-- Option B (recommended): Start a local server for proper routing/resources
-  - Python: `python -m http.server 8000`
-  - Node (serve): `npx serve .`
-
-3. Visit `http://localhost:8000` (if using a server) or open `index.html` directly.
-
-## 🧩 Project Structure
-
-```
-index.html
-styles.css
-script.js
-src/
+**Using Node.js**
+```bash
+npx serve .
 ```
 
-- `index.html` — main HTML
-- `styles.css` — site styles
-- `script.js` — client-side JavaScript
-- `src/` — assets (images, icons, etc.)
+---
+
+## 📌 Featured Projects
+
+- **Attendance Management System**  
+  Web-based application to manage and track student attendance efficiently.
+
+- **Stone Paper Scissors Game**  
+  Python-based command-line game with score tracking and logic handling.
+
+- **Flappy Bird Game**  
+  Desktop game built using Python and Pygame featuring collision detection and scoring.
+
+(All projects are linked directly to GitHub from the portfolio website.)
+
+---
+
+## 📜 Certifications
+
+- **Smart Coder – Silver Certificate** — Issued by Smart Interviews (2025)
+- **Mobile Application Development** — Parul University (2024)
+
+---
+
+## 📬 Contact
+
+- **Email:** dhairyakhatri83@gmail.com
+- **GitHub:** https://github.com/DhryXpert
+- **LinkedIn:** https://www.linkedin.com/in/dhairya-khatri-kd0711/
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome. Open an issue or submit a pull request with a clear description of changes.
+This is a personal project, but suggestions and improvements are welcome. Feel free to open an issue or submit a pull request.
+
+---
 
 ## 📄 License
 
-This project is provided under the **MIT License** — see `LICENSE` if you add one.
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute it with attribution.
 
-## ✉️ Author
-
-Dhairya Khatri
-contact details: +91 9426369041
+© 2026 Dhairya Khatri
