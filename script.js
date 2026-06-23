@@ -1,122 +1,322 @@
 // ============================================
-// FLOWING PARTICLE BACKGROUND
+// DEVELOPER SOLAR SYSTEM BACKGROUND
 // ============================================
 (function () {
     const canvas = document.getElementById('particleCanvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    let width, height, particles, mouse;
-    const PARTICLE_COUNT = 90;
-    const CONNECTION_DIST = 140;
-    const MOUSE_RADIUS = 180;
+    let width, height;
+    let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    
+    // Core center position and ease variables
+    let cx = 0, cy = 0;
+    let targetCX = 0, targetCY = 0;
 
-    mouse = { x: -9999, y: -9999 };
+    // Ambient stars setup
+    const stars = [];
+    const STAR_COUNT = 80;
 
     function resize() {
         width = canvas.width = window.innerWidth;
-        height = canvas.height = document.documentElement.scrollHeight;
-    }
-
-    function createParticles() {
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
-                radius: Math.random() * 2 + 1,
-                opacity: Math.random() * 0.5 + 0.2
-            });
+        height = canvas.height = window.innerHeight; // Fixed viewport resolution
+        
+        // Reset base positions after resize
+        const baseCenter = getBaseCenter();
+        if (cx === 0 && cy === 0) {
+            cx = targetCX = baseCenter.x;
+            cy = targetCY = baseCenter.y;
         }
     }
 
-    function drawParticle(p) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(77, 166, 255, ${p.opacity})`;
-        ctx.fill();
-    }
-
-    function drawConnections() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < CONNECTION_DIST) {
-                    const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 217, 255, ${alpha})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.stroke();
-                }
-            }
+    function getBaseCenter() {
+        if (window.innerWidth > 1024) {
+            return { x: window.innerWidth * 0.7, y: window.innerHeight * 0.5 };
+        } else {
+            return { x: window.innerWidth * 0.5, y: window.innerHeight * 0.35 };
         }
     }
 
-    function update() {
-        const scrollY = window.scrollY;
-        particles.forEach(p => {
-            // Gentle drift
-            p.x += p.vx;
-            p.y += p.vy;
-
-            // Mouse repulsion (relative to scroll)
-            const mx = mouse.x;
-            const my = mouse.y + scrollY;
-            const dx = p.x - mx;
-            const dy = p.y - my;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < MOUSE_RADIUS && dist > 0) {
-                const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.02;
-                p.vx += (dx / dist) * force;
-                p.vy += (dy / dist) * force;
-            }
-
-            // Speed dampening for smooth flow
-            p.vx *= 0.995;
-            p.vy *= 0.995;
-
-            // Wrap around edges
-            if (p.x < -10) p.x = width + 10;
-            if (p.x > width + 10) p.x = -10;
-            if (p.y < -10) p.y = height + 10;
-            if (p.y > height + 10) p.y = -10;
+    // Initialize stars
+    for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+            x: Math.random(),
+            y: Math.random(),
+            size: Math.random() * 1.5 + 0.5,
+            alpha: Math.random(),
+            speed: 0.005 + Math.random() * 0.01
         });
     }
 
+    // Tech Stack Planets & Moons configuration
+    const planets = [
+        {
+            name: 'JavaScript',
+            label: 'JS',
+            color: '#f7df1e',
+            radius: 120,
+            speed: 0.006,
+            angle: Math.random() * Math.PI * 2,
+            size: 15,
+            moons: [
+                { label: 'TS', color: '#3178c6', radius: 24, speed: 0.03, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        },
+        {
+            name: 'React.js',
+            label: 'React',
+            color: '#61dafb',
+            radius: 190,
+            speed: 0.004,
+            angle: Math.random() * Math.PI * 2,
+            size: 18,
+            moons: [
+                { label: 'Tw', color: '#38bdf8', radius: 26, speed: 0.022, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        },
+        {
+            name: 'Node.js',
+            label: 'Node',
+            color: '#339933',
+            radius: 260,
+            speed: 0.003,
+            angle: Math.random() * Math.PI * 2,
+            size: 16,
+            moons: [
+                { label: 'Ex', color: '#ffffff', radius: 24, speed: 0.026, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        },
+        {
+            name: 'Python',
+            label: 'Py',
+            color: '#3776ab',
+            radius: 330,
+            speed: 0.002,
+            angle: Math.random() * Math.PI * 2,
+            size: 16,
+            moons: [
+                { label: 'Pd', color: '#ff7c00', radius: 24, speed: 0.018, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        },
+        {
+            name: 'MongoDB',
+            label: 'Mongo',
+            color: '#47a248',
+            radius: 400,
+            speed: 0.0014,
+            angle: Math.random() * Math.PI * 2,
+            size: 18,
+            moons: [
+                { label: 'SQL', color: '#00758f', radius: 25, speed: 0.016, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        },
+        {
+            name: 'Git',
+            label: 'Git',
+            color: '#f05032',
+            radius: 470,
+            speed: 0.001,
+            angle: Math.random() * Math.PI * 2,
+            size: 15,
+            moons: [
+                { label: 'GH', color: '#ffffff', radius: 23, speed: 0.02, angle: Math.random() * Math.PI * 2, size: 7.5 }
+            ]
+        }
+    ];
+
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        update();
-        drawConnections();
-        particles.forEach(drawParticle);
+
+        const scrollY = window.scrollY;
+        
+        // Parallax and fade out as page scrolls down
+        const opacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.85));
+        
+        // Update mouse position smoothing
+        mouse.x += (mouse.targetX - mouse.x) * 0.08;
+        mouse.y += (mouse.targetY - mouse.y) * 0.08;
+
+        // Draw ambient stars (twinkling and scrolling parallax)
+        stars.forEach(star => {
+            star.alpha += star.speed;
+            if (star.alpha > 1 || star.alpha < 0.1) {
+                star.speed = -star.speed;
+            }
+            const sx = star.x * width;
+            const sy = (star.y * height - scrollY * 0.12 + height) % height;
+            ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.05, star.alpha * 0.45)})`;
+            ctx.beginPath();
+            ctx.arc(sx, sy, star.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        // Only draw solar system if it's visible in viewport
+        if (opacity > 0) {
+            const baseCenter = getBaseCenter();
+            
+            // Mouse drift influence
+            const mouseOffsetX = (mouse.x - width / 2) * 0.06;
+            const mouseOffsetY = (mouse.y - height / 2) * 0.06;
+
+            // Target position incorporates base center, mouse offset, and scroll parallax
+            targetCX = baseCenter.x + mouseOffsetX;
+            targetCY = baseCenter.y + mouseOffsetY - scrollY * 0.35;
+
+            // Smooth interpolation to center
+            cx += (targetCX - cx) * 0.06;
+            cy += (targetCY - cy) * 0.06;
+
+            // 1. Draw central developer core (Sun)
+            // Outer glow
+            const sunGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, 60);
+            sunGlow.addColorStop(0, `rgba(0, 217, 255, ${opacity * 0.25})`);
+            sunGlow.addColorStop(1, 'rgba(0, 217, 255, 0)');
+            ctx.fillStyle = sunGlow;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 60, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Inner core circle
+            ctx.beginPath();
+            ctx.arc(cx, cy, 26, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(15, 15, 15, ${opacity * 0.9})`;
+            ctx.strokeStyle = `rgba(0, 217, 255, ${opacity})`;
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'rgba(0, 217, 255, 0.7)';
+            ctx.fill();
+            ctx.stroke();
+            ctx.shadowBlur = 0; // reset
+
+            // Code symbol inside core
+            ctx.fillStyle = `rgba(0, 217, 255, ${opacity})`;
+            ctx.font = 'bold 12px monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('</>', cx, cy);
+
+            // Rotating tech ring
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(Date.now() * 0.0003);
+            ctx.beginPath();
+            ctx.arc(0, 0, 36, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(77, 166, 255, ${opacity * 0.35})`;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 8]);
+            ctx.stroke();
+            ctx.restore();
+
+            // 2. Draw orbits, gravity rays, and planets
+            planets.forEach(planet => {
+                const angle = planet.angle;
+                
+                // Calculate planet position
+                const px = cx + planet.radius * Math.cos(angle);
+                const py = cy + planet.radius * Math.sin(angle);
+
+                // Draw faint dashed orbit ring
+                ctx.beginPath();
+                ctx.arc(cx, cy, planet.radius, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(0, 217, 255, ${opacity * 0.07})`;
+                ctx.lineWidth = 1;
+                ctx.setLineDash([3, 10]);
+                ctx.stroke();
+                ctx.setLineDash([]); // reset
+
+                // Draw faint gravity connection ray
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.lineTo(px, py);
+                ctx.strokeStyle = `rgba(0, 217, 255, ${opacity * 0.04})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+
+                // Draw planet body
+                ctx.beginPath();
+                ctx.arc(px, py, planet.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(15, 15, 15, ${opacity * 0.95})`;
+                ctx.strokeStyle = hexToRgba(planet.color, opacity);
+                ctx.lineWidth = 1.8;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = planet.color;
+                ctx.fill();
+                ctx.stroke();
+                ctx.shadowBlur = 0; // reset
+
+                // Draw planet label (Inter font)
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.9})`;
+                ctx.font = `bold ${planet.size * 0.65}px 'Inter', sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(planet.label, px, py);
+
+                // Draw moons
+                if (planet.moons) {
+                    planet.moons.forEach(moon => {
+                        const mx = px + moon.radius * Math.cos(moon.angle);
+                        const my = py + moon.radius * Math.sin(moon.angle);
+
+                        // Draw moon body
+                        ctx.beginPath();
+                        ctx.arc(mx, my, moon.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(20, 20, 20, ${opacity * 0.95})`;
+                        ctx.strokeStyle = hexToRgba(moon.color, opacity);
+                        ctx.lineWidth = 1.2;
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = moon.color;
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.shadowBlur = 0; // reset
+
+                        // Draw moon text
+                        ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
+                        ctx.font = `500 ${moon.size * 0.75}px monospace`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(moon.label, mx, my);
+
+                        // Orbit update
+                        moon.angle += moon.speed;
+                    });
+                }
+
+                // Orbit update
+                planet.angle += planet.speed;
+            });
+        }
+
         requestAnimationFrame(animate);
     }
 
-    // Track mouse
+    function hexToRgba(hex, alpha) {
+        let c;
+        if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+            c= hex.substring(1).split('');
+            if(c.length== 3){
+                c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c= '0x' + c.join('');
+            return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+alpha+')';
+        }
+        return `rgba(255,255,255,${alpha})`;
+    }
+
+    // Event listeners
     window.addEventListener('mousemove', e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+        mouse.targetX = e.clientX;
+        mouse.targetY = e.clientY;
     });
 
-    // Resize canvas when window or page height changes
     window.addEventListener('resize', () => {
         resize();
-        createParticles();
     });
 
-    // Recalculate canvas height after all images load
     window.addEventListener('load', () => {
         resize();
-        createParticles();
     });
 
     resize();
-    createParticles();
     animate();
 })();
 // ============================================
