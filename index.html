@@ -3,29 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhairya Khatri</title>
+    <title>Dhairya Khatri — Software Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Dhairya Khatri — final-year CS engineer building production-grade full-stack systems. Explore projects, skills, and achievements.">
     <link rel="icon" type="image/png" href="src/logo.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <i class="fa-brands fa-github" aria-hidden="true"></i>
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Flowing particle background -->
+    <canvas id="particleCanvas"></canvas>
+
     <!-- ============================================
          NAVIGATION
     ============================================ -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">KD</div>
+            <a href="#hero" class="logo">DK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -35,216 +43,391 @@
 
     <!-- ============================================
          HERO SECTION
-         INSTRUCTIONS: Replace src with your image path
     ============================================ -->
     <section id="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <p class="greeting">Welcome to my portfolio!</p>
-                <h1>Hello, I'm <span class="highlight">Dhairya Khatri</span></h1>
-                <p class="tagline">
-                   Computer Science Engineering student building full-stack web apps and practicing DSA consistently
-                </p>
-
+                <h1>Hey, I'm <span class="highlight">Dhairya Khatri</span></h1>
+                <p class="tagline">I'm <span id="roleArticle">a</span> <span class="role-text" id="roleText">Developer</span><span class="typing-cursor">|</span></p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary" id="cta-projects">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary" id="cta-contact">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="image-wrapper">
-                    <!-- REPLACE THIS WITH YOUR IMAGE -->
                     <img src="src/image2.png" alt="Dhairya Khatri" class="profile-image">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================
+         ABOUT SECTION
+    ============================================ -->
     <section id="about">
         <h2 class="section-title fade-in">About Me</h2>
         <div class="about-content fade-in">
-            <p>I'm a Computer Science Engineering student focused on backend and full-stack development. I enjoy building practical applications, working with APIs and databases, and improving my problem-solving skills through DSA practice and real projects.</p>
-            <p>I believe in writing clean, maintainable code and continuously improving my problem-solving skills through hands-on development and consistent practice.</p>
+            <p>Final-year Computer Science undergrad focused on full-stack and backend engineering. I build systems with production concerns in mind — schema design, API contracts, caching, service decomposition — not just demo-ready prototypes. Recently integrated agentic AI into a live product and I'm currently deepening my AI/ML foundations alongside continuous DSA practice.</p>
         </div>
     </section>
 
+    <!-- ============================================
+         SKILLS SECTION
+    ============================================ -->
     <section id="skills">
-    <h2 class="section-title fade-in">Skills</h2>
+        <h2 class="section-title fade-in">Tech Stack</h2>
+        <div class="tech-pyramid-container fade-in">
+            <div class="pyramid-grid-lines">
+                <svg viewBox="0 0 1000 500" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="gridLineGrad" x1="500" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="var(--accent-cyan)" stop-opacity="0.18" />
+                            <stop offset="60%" stop-color="var(--accent-blue)" stop-opacity="0.08" />
+                            <stop offset="100%" stop-color="transparent" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                    <!-- radiating lines converging to a point below (500, 520) -->
+                    <line x1="500" y1="520" x2="-200" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="0" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="200" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="350" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="500" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="650" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="800" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="1000" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <line x1="500" y1="520" x2="1200" y2="-50" stroke="url(#gridLineGrad)" stroke-width="1" />
 
-    <div class="skills-grid">
-
-    <div class="skill-card fade-in">
-        <h3>Frontend Development</h3>
-        <p>HTML, CSS, JavaScript · Responsive layouts, reusable components, accessible UI</p>
-    </div>
-
-    <div class="skill-card fade-in">
-        <h3>Backend Development</h3>
-        <p>Python, Flask · REST APIs, CRUD operations, validation, server-side logic</p>
-    </div>
-
-    <div class="skill-card fade-in">
-        <h3>Databases</h3>
-        <p>SQL (MySQL / PostgreSQL) · Schema design, joins, indexing, optimized queries</p>
-    </div>
-
-    <div class="skill-card fade-in">
-        <h3>Programming & Problem Solving</h3>
-        <p>Java, Python · OOP fundamentals, DSA practice, debugging and logic building</p>
-    </div>
-
-    <div class="skill-card fade-in">
-        <h3>Projects & Tools</h3>
-        <p>End-to-end full-stack apps · API & DB integration · Git & GitHub workflows</p>
-    </div>
-
-</div>
-
-</section>
-
-    <section id="projects">
-    <h2 class="section-title fade-in">Featured Projects</h2>
-
-    <div class="projects-grid">
-
-        <!-- PROJECT 1 -->
-        <div class="project-card fade-in">
-            <h3>CodeOrbit</h3>
-            <p>
-                An AI-powered GitHub Pull Request reviewer that automatically posts code quality feedback, optimization suggestions, and bug detection comments directly onto your PRs.
-            </p>
-            <div class="tech-stack">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">Gemini AI</span>
+                    <!-- horizontal curved arcs -->
+                    <path d="M -100 50 Q 500 90 1100 50" fill="none" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <path d="M -50 140 Q 500 180 1050 140" fill="none" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <path d="M 0 230 Q 500 270 1000 230" fill="none" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <path d="M 50 320 Q 500 360 950 320" fill="none" stroke="url(#gridLineGrad)" stroke-width="1" />
+                    <path d="M 100 410 Q 500 445 900 410" fill="none" stroke="url(#gridLineGrad)" stroke-width="1" />
+                </svg>
             </div>
-            <a href="https://github.com/DhryXpert/CodeOrbit" class="project-link" target="_blank">
-                View on GitHub →
-            </a>
-        </div>
-
-        <!-- PROJECT 2 -->
-        <div class="project-card fade-in">
-            <h3>Expense Tracker</h3>
-            <p>
-                A secure, user-friendly full-stack web application for recording, managing, and analyzing personal income and expenses with an interactive dashboard.
-            </p>
-            <div class="tech-stack">
-                <span class="tech-tag">MERN Stack</span>
-                <span class="tech-tag">Tailwind CSS</span>
-                <span class="tech-tag">JWT</span>
-            </div>
-            <a href="https://github.com/DhryXpert/Expense-Tracker" class="project-link" target="_blank">
-                View on GitHub →
-            </a>
-        </div>
-
-        <!-- PROJECT 3 -->
-        <div class="project-card fade-in">
-            <h3>Attendance Management System</h3>
-            <p>
-                A web-based attendance management application designed to track and manage student attendance efficiently.
-                Includes a clean UI and dynamic data handling for real-world use.
-            </p>
-            <div class="tech-stack">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-            </div>
-            <a href="https://github.com/DhryXpert/Attendence-Managemet" class="project-link" target="_blank">
-                View on GitHub →
-            </a>
-        </div>
-
-    </div>
-
-<section id="certifications">
-        <h2 class="section-title fade-in">Certifications</h2>
-        <div class="projects-grid">
             
-            <!-- CERTIFICATION 1 -->
-            <div class="project-card fade-in">
-                <h3>Smart Coder</h3>
-                <p>
-                    Earned the Smart Coder - Silver Certificate by successfully completing the Smart Interviews program in 2025.
-                    Demonstrates strong problem-solving skills, coding fundamentals, and consistent performance at a global level.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">DSA</span>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">Python</span>
+            <div class="tech-pyramid">
+                <!-- Row 1: Languages & Frontend Core (9 items) -->
+                <div class="tech-row">
+                    <div class="tech-icon-card">
+                        <i class="devicon-javascript-plain"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-typescript-plain"></i>
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-java-plain"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-python-plain"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-react-original"></i>
+                        <span>React.js</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-html5-plain"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-css3-plain"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-tailwindcss-original"></i>
+                        <span>Tailwind CSS</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-figma-plain"></i>
+                        <span>Figma</span>
+                    </div>
                 </div>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem;">
-                    <strong>Issued by:</strong> Smart interviews · <strong>Date:</strong> June 2025
-                </p>
-                <a href="https://smartinterviews.in/certificate/b36ccfe4" class="project-link" target="_blank">
-                    View Certificate →
+
+                <!-- Row 2: Backend Frameworks & Core DBs (7 items) -->
+                <div class="tech-row">
+                    <div class="tech-icon-card">
+                        <i class="devicon-nodejs-plain"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-express-original"></i>
+                        <span>Express.js</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-spring-original"></i>
+                        <span>Spring Boot</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="fa-solid fa-plug"></i>
+                        <span>RESTful APIs</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-flask-original"></i>
+                        <span>Flask</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-mongodb-plain"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-supabase-plain"></i>
+                        <span>Supabase</span>
+                    </div>
+                </div>
+
+                <!-- Row 3: DBs & Version Control & Basic Tools (5 items) -->
+                <div class="tech-row">
+                    <div class="tech-icon-card">
+                        <i class="devicon-firebase-plain"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-mysql-original"></i>
+                        <span>SQL</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-git-plain"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-github-original"></i>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-postman-plain"></i>
+                        <span>Postman</span>
+                    </div>
+                </div>
+
+                <!-- Row 4: IDEs & DevOps & Analytics (3 items) -->
+                <div class="tech-row">
+                    <div class="tech-icon-card">
+                        <i class="devicon-vscode-plain"></i>
+                        <span>VS Code</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="fa-solid fa-arrows-spin"></i>
+                        <span>CI/CD</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-pandas-plain"></i>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+
+                <!-- Row 5: Data Science Math (2 items) -->
+                <div class="tech-row">
+                    <div class="tech-icon-card">
+                        <i class="devicon-numpy-plain"></i>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="tech-icon-card">
+                        <i class="devicon-matplotlib-plain"></i>
+                        <span>Matplotlib</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         EXPERIENCE SECTION
+    ============================================ -->
+    <section id="experience">
+        <h2 class="section-title fade-in">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-header">
+                        <h3>Institute Innovation Ambassador</h3>
+                        <span class="timeline-date"><i class="fa-regular fa-calendar"></i> Feb 2025 – Mar 2026</span>
+                    </div>
+                    <p class="timeline-org">Parul Institute of Entrepreneurship and Research Center</p>
+                    <ul class="timeline-bullets">
+                        <li>Led innovation initiatives and represented the university at inter-institute competitions</li>
+                        <li>Organized workshops on emerging tech for 100+ students</li>
+                        <li>Mentored juniors on ideation and presentation skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROJECTS SECTION
+    ============================================ -->
+    <section id="projects">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="projects-grid">
+
+            <!-- PROJECT 1 — CodeOrbit -->
+            <article class="project-card glass-card fade-in" id="project-codeorbit">
+                <div class="project-card-header">
+                    <i class="fa-solid fa-satellite project-icon"></i>
+                    <h3>CodeOrbit</h3>
+                </div>
+                <p>AI-powered GitHub PR reviewer that analyzes every incoming pull request using Google Gemini 2.5 Flash — catching bugs, suggesting optimizations, and enforcing best practices automatically. Connects via automated webhook setup, tracks PRs in real time with configurable windows, and supports OAuth login with encrypted session storage.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Express.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Gemini 2.5 Flash</span>
+                </div>
+                <a href="https://github.com/DhryXpert/CodeOrbit" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- PROJECT 2 — Personal Finance Manager -->
+            <article class="project-card glass-card fade-in" id="project-finance">
+                <div class="project-card-header">
+                    <i class="fa-solid fa-wallet project-icon"></i>
+                    <h3>Personal Finance Manager</h3>
+                </div>
+                <p>Full-stack MERN app for real-time expense tracking, income categorization, and savings monitoring. Built RESTful APIs across 5+ financial categories, cut load time by 30%, and shipped a dynamic dashboard that eliminated manual calculation effort entirely.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express.js</span>
+                </div>
+                <a href="https://github.com/DhryXpert/Expense-Tracker" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         ACHIEVEMENTS SECTION
+    ============================================ -->
+    <section id="achievements">
+        <h2 class="section-title fade-in">Achievements</h2>
+        <div class="stats-bar fade-in">
+            <div class="stat-item">
+                <span class="stat-number" data-target="750">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">DSA Problems Solved</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="1625">0</span>
+                <span class="stat-label">LeetCode Contest Rating</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">Top 10%</span>
+                <span class="stat-label">Smart India Hackathon</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Students Mentored</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CODING PROFILES SECTION
+    ============================================ -->
+    <section id="coding-profiles">
+        <h2 class="section-title fade-in">Coding Profiles</h2>
+        <div class="profiles-row fade-in">
+            <a href="https://leetcode.com/u/DhryXpert/" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="LeetCode">
+                <i class="fa-solid fa-code"></i>
+                <span>LeetCode</span>
+            </a>
+            <a href="https://www.codechef.com/users/dhryxpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="CodeChef">
+                <i class="fa-solid fa-hat-chef fa-utensils"></i>
+                <span>CodeChef</span>
+            </a>
+            <a href="https://codeforces.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="Codeforces">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Codeforces</span>
+            </a>
+            <a href="https://www.hackerrank.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="HackerRank">
+                <i class="fa-brands fa-hackerrank"></i>
+                <span>HackerRank</span>
+            </a>
+            <a href="https://www.interviewbit.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="InterviewBit">
+                <i class="fa-solid fa-laptop-code"></i>
+                <span>InterviewBit</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CERTIFICATIONS SECTION
+    ============================================ -->
+    <section id="certifications">
+        <h2 class="section-title fade-in">Certifications</h2>
+        <div class="certifications-grid">
+
+            <div class="cert-card glass-card fade-in">
+                <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+                <h3>Smart Coder – Silver Certificate</h3>
+                <p class="cert-issuer">Smart Interviews · 2025</p>
+                <p class="cert-desc">Demonstrates strong problem-solving skills, coding fundamentals, and consistent performance at a global level.</p>
+                <a href="https://smartinterviews.in/certificate/b36ccfe4" class="project-link" target="_blank" rel="noopener noreferrer">
+                    View Certificate <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- CERTIFICATION 2 -->
-            <div class="project-card fade-in">
+            <div class="cert-card glass-card fade-in">
+                <div class="cert-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
                 <h3>Mobile Application Development</h3>
-                <p>
-                    Successfully completed a short-term, skill-oriented Certificate Program in Android Application Development conducted by Parul Institute of Technology under Parul University
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Android Studio</span>
-                    <span class="tech-tag">Mobile application</span>
-                    <span class="tech-tag">Java</span>
-                </div>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem;">
-                    <strong>Issued by:</strong> Parul University · <strong>Date:</strong> March 2024
-                </p>
-                <a href="https://www.linkedin.com/posts/dhairya-khatri-kd0711_androiddevelopment-appdevelopment-codingjourney-activity-7239243423751270400-_S1_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEcUmUoBUDeBcbJ4YDdL6HguLZAsooiS3jk" class="project-link" target="_blank">
-                    View Certificate →
+                <p class="cert-issuer">Parul University · 2024</p>
+                <p class="cert-desc">Completed a skill-oriented Certificate Program in Android Application Development conducted by Parul Institute of Technology.</p>
+                <a href="https://www.linkedin.com/posts/dhairya-khatri-kd0711_androiddevelopment-appdevelopment-codingjourney-activity-7239243423751270400-_S1_" class="project-link" target="_blank" rel="noopener noreferrer">
+                    View Certificate <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 
         </div>
     </section>
 
-
-</section>
+    <!-- ============================================
+         CONTACT SECTION
+    ============================================ -->
     <section id="contact">
         <h2 class="section-title fade-in">Get In Touch</h2>
         <div class="contact-content fade-in">
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. I'm open to internships, projects, and collaboration opportunities. Feel free to reach out!</p>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's connect!</p>
             <div class="contact-info">
-                <a href="mailto:dhairyakhatri83@gmail.com" class="contact-item">
-                    📧 dhairyakhatri83@gmail.com
+                <a href="mailto:dhairyakhatri83@gmail.com" class="contact-item" id="contact-email">
+                    <i class="fa-solid fa-envelope"></i> dhairyakhatri83@gmail.com
                 </a>
             </div>
             <div class="social-links">
-
-            <a href="https://github.com/DhryXpert" target="_blank" class="social-link" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-            </a>
-
-            <a href="https://www.linkedin.com/in/dhairya-khatri-kd0711/" target="_blank" class="social-link" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-
-            <a href="https://www.instagram.com/dhairya_khatri_7/"
-             target="_blank" class="social-link" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-
-            <a href="mailto:dhairyakhatri83@gmail.com" class="social-link" aria-label="Email">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
-
+                <a href="https://github.com/DhryXpert" target="_blank" class="social-link" aria-label="GitHub" id="social-github">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/dhairya-khatri-kd0711/" target="_blank" class="social-link" aria-label="LinkedIn" id="social-linkedin">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/dhairya_khatri_7/" target="_blank" class="social-link" aria-label="Instagram" id="social-instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:dhairyakhatri83@gmail.com" class="social-link" aria-label="Email" id="social-email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
             </div>
-
         </div>
     </section>
 
+    <!-- ============================================
+         FOOTER
+    ============================================ -->
     <footer>
         <p>&copy; 2026 Dhairya Khatri. All rights reserved.</p>
     </footer>
 
-    <div class="scroll-top" id="scrollTop"></div>
+    <!-- Scroll-to-top button -->
+    <div class="scroll-top" id="scrollTop" aria-label="Scroll to top"></div>
 
     <script src="script.js"></script>
 </body>
