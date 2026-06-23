@@ -32,6 +32,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="nav-resume-item"><a href="src/resume.pdf" download="Dhairya_Khatri_Resume.pdf" title="Download Resume" class="nav-resume-btn" aria-label="Download Resume"><i class="fa-solid fa-download"></i></a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
                 <span></span>
@@ -51,6 +52,9 @@
                 <p class="tagline">I'm <span id="roleArticle">a</span> <span class="role-text" id="roleText">Developer</span><span class="typing-cursor">|</span></p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary" id="cta-projects">View Projects</a>
+                    <a href="src/resume.pdf" download="Dhairya_Khatri_Resume.pdf" class="btn btn-secondary" id="cta-resume">
+                        <i class="fa-solid fa-download"></i> Download Resume
+                    </a>
                     <a href="#contact" class="btn btn-secondary" id="cta-contact">Contact Me</a>
                 </div>
             </div>
@@ -272,35 +276,95 @@
                     <i class="fa-solid fa-satellite project-icon"></i>
                     <h3>CodeOrbit</h3>
                 </div>
-                <p>AI-powered GitHub PR reviewer that analyzes every incoming pull request using Google Gemini 2.5 Flash — catching bugs, suggesting optimizations, and enforcing best practices automatically. Connects via automated webhook setup, tracks PRs in real time with configurable windows, and supports OAuth login with encrypted session storage.</p>
+                <p>AI-powered GitHub PR reviewer that analyzes every incoming pull request using Google Gemini 2.5 Flash to catch bugs, suggest optimizations, and enforce best practices automatically. Features seamless GitHub integration via webhooks, real-time tracking, and full OAuth login with encrypted session storage.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">React.js</span>
                     <span class="tech-tag">Express.js</span>
                     <span class="tech-tag">Node.js</span>
                     <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Gemini 2.5 Flash</span>
+                    <span class="tech-tag">Agentic AI</span>
                 </div>
-                <a href="https://github.com/DhryXpert/CodeOrbit" class="project-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <div class="project-links">
+                    <a href="https://github.com/DhryXpert/CodeOrbit" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i> GitHub <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://aicodeorbit.vercel.app" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Project <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
             </article>
 
-            <!-- PROJECT 2 — Personal Finance Manager -->
-            <article class="project-card glass-card fade-in" id="project-finance">
+            <!-- PROJECT 2 — Personal Expense & Income Management App -->
+            <article class="project-card glass-card fade-in" id="project-expense">
                 <div class="project-card-header">
                     <i class="fa-solid fa-wallet project-icon"></i>
-                    <h3>Personal Finance Manager</h3>
+                    <h3>Personal Expense & Income App</h3>
                 </div>
-                <p>Full-stack MERN app for real-time expense tracking, income categorization, and savings monitoring. Built RESTful APIs across 5+ financial categories, cut load time by 30%, and shipped a dynamic dashboard that eliminated manual calculation effort entirely.</p>
+                <p>Full-stack MERN personal finance web app with real-time expense tracking, income categorization, and savings monitoring. Optimized system loading speed by 30%, implemented RESTful CRUD APIs across 5+ financial categories, and integrated a dynamic financial summary dashboard.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">React.js</span>
                     <span class="tech-tag">Node.js</span>
                     <span class="tech-tag">MongoDB</span>
                     <span class="tech-tag">Express.js</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">Tailwind CSS</span>
                 </div>
-                <a href="https://github.com/DhryXpert/Expense-Tracker" class="project-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <div class="project-links">
+                    <a href="https://github.com/DhryXpert/Personal-Expense-Income-Management-Web-Application" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i> GitHub <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://expensetrackerdhairyakhatri.netlify.app" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Project <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- PROJECT 3 — CalmVerse -->
+            <article class="project-card glass-card fade-in" id="project-calmverse">
+                <div class="project-card-header">
+                    <i class="fa-solid fa-hand-holding-heart project-icon"></i>
+                    <h3>CalmVerse</h3>
+                </div>
+                <p>Full-stack AI-powered mental health platform providing real-time, confidential emotional support. Integrated AI conversational features with sub-2s response times, designed an accessible and responsive UI in Figma, and implemented JWT session management via Supabase Auth.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Express.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">Figma</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DhryXpert/CalmiVerse" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i> GitHub <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <span class="project-link disabled" title="Deployment Under Process">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Demo Coming Soon
+                    </span>
+                </div>
+            </article>
+
+            <!-- PROJECT 4 — AI GigShield -->
+            <article class="project-card glass-card fade-in" id="project-gigshield">
+                <div class="project-card-header">
+                    <i class="fa-solid fa-shield-halved project-icon"></i>
+                    <h3>AI GigShield</h3>
+                </div>
+                <p>Parametric income protection platform for gig workers. Features a dynamic Income Stability Score engine driven by ordered earnings and order behavior, a machine learning fraud detection module, and a UPI-based sub-60-second claim payout system. Hackathon Top 10% submission.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">AI/ML</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DhryXpert/GigShield" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i> GitHub <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <span class="project-link disabled" title="Deployment Under Process">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Demo Coming Soon
+                    </span>
+                </div>
             </article>
 
         </div>
@@ -313,7 +377,7 @@
         <h2 class="section-title fade-in">Achievements</h2>
         <div class="stats-bar fade-in">
             <div class="stat-item">
-                <span class="stat-number" data-target="750">0</span><span class="stat-plus">+</span>
+                <span class="stat-number" data-target="950">0</span><span class="stat-plus">+</span>
                 <span class="stat-label">DSA Problems Solved</span>
             </div>
             <div class="stat-item">
@@ -325,8 +389,8 @@
                 <span class="stat-label">Smart India Hackathon</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" data-target="100">0</span><span class="stat-plus">+</span>
-                <span class="stat-label">Students Mentored</span>
+                <span class="stat-number" data-target="7">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Projects</span>
             </div>
         </div>
     </section>
@@ -337,7 +401,7 @@
     <section id="coding-profiles">
         <h2 class="section-title fade-in">Coding Profiles</h2>
         <div class="profiles-row fade-in">
-            <a href="https://leetcode.com/u/DhryXpert/" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="LeetCode">
+            <a href="https://leetcode.com/u/dhairya_khatri/" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="LeetCode">
                 <i class="fa-solid fa-code"></i>
                 <span>LeetCode</span>
             </a>
@@ -345,17 +409,23 @@
                 <i class="fa-solid fa-hat-chef fa-utensils"></i>
                 <span>CodeChef</span>
             </a>
-            <a href="https://codeforces.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="Codeforces">
+            <a href="https://codeforces.com/profile/dhairya_khatri" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="Codeforces">
                 <i class="fa-solid fa-chart-line"></i>
                 <span>Codeforces</span>
             </a>
-            <a href="https://www.hackerrank.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="HackerRank">
+            <a href="https://www.hackerrank.com/profile/dhairyakhatri83" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="HackerRank">
                 <i class="fa-brands fa-hackerrank"></i>
                 <span>HackerRank</span>
             </a>
-            <a href="https://www.interviewbit.com/profile/DhryXpert" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="InterviewBit">
+            <a href="https://www.interviewbit.com/profile/dhairya-khatri/" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="InterviewBit">
                 <i class="fa-solid fa-laptop-code"></i>
                 <span>InterviewBit</span>
+            </a>
+            <a href="https://www.geeksforgeeks.org/profile/dhairya_khatri_07" target="_blank" rel="noopener noreferrer" class="profile-badge" aria-label="GeeksforGeeks">
+                <svg viewBox="0 0 24 24" class="profile-badge-svg" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.45 14.315c-.143.28-.334.532-.565.745a3.691 3.691 0 0 1-1.104.695 4.51 4.51 0 0 1-3.116-.016 3.79 3.79 0 0 1-2.135-2.078 3.571 3.571 0 0 1-.13-.353h7.418a4.26 4.26 0 0 1-.368 1.008zm-11.99-.654a3.793 3.793 0 0 1-2.134 2.078 4.51 4.51 0 0 1-3.117.016 3.7 3.7 0 0 1-1.104-.695 2.652 2.652 0 0 1-.564-.745 4.221 4.221 0 0 1-.368-1.006H9.59c-.038.12-.08.238-.13.352zm14.501-1.758a3.849 3.849 0 0 0-.082-.475l-9.634-.008a3.932 3.932 0 0 1 1.143-2.348c.363-.35.79-.625 1.26-.809a3.97 3.97 0 0 1 4.484.957l1.521-1.49a5.7 5.7 0 0 0-1.922-1.357 6.283 6.283 0 0 0-2.544-.49 6.35 6.35 0 0 0-2.405.457 6.007 6.007 0 0 0-1.963 1.276 6.142 6.142 0 0 0-1.325 1.94 5.862 5.862 0 0 0-.466 1.864h-.063a5.857 5.857 0 0 0-.467-1.865 6.13 6.13 0 0 0-1.325-1.939A6 6 0 0 0 8.21 6.34a6.698 6.698 0 0 0-4.949.031A5.708 5.708 0 0 0 1.34 7.73l1.52 1.49a4.166 4.166 0 0 1 4.484-.958c.47.184.898.46 1.26.81.368.36.66.792.859 1.268.146.344.242.708.285 1.08l-9.635.008A4.714 4.714 0 0 0 0 12.457a6.493 6.493 0 0 0 .345 2.127 4.927 4.927 0 0 0 1.08 1.783c.528.56 1.17 1 1.88 1.293a6.454 6.454 0 0 0 2.504.457c.824.005 1.64-.15 2.404-.457a5.986 5.986 0 0 0 1.964-1.277 6.116 6.116 0 0 0 1.686-3.076h.273a6.13 6.13 0 0 0 1.686 3.077 5.99 5.99 0 0 0 1.964 1.276 6.345 6.345 0 0 0 2.405.457 6.45 6.45 0 0 0 2.502-.457 5.42 5.42 0 0 0 1.882-1.293 4.928 4.928 0 0 0 1.08-1.783A6.52 6.52 0 0 0 24 12.457a4.757 4.757 0 0 0-.039-.554z" fill="currentColor"/>
+                </svg>
+                <span>GeeksforGeeks</span>
             </a>
         </div>
     </section>

@@ -1,6 +1,3 @@
-/* ============================================
-   CSS VARIABLES
-============================================ */
 :root {
     --bg-primary: #111111;
     --bg-secondary: #1a1a1a;
@@ -126,6 +123,25 @@ nav.scrolled {
     color: var(--accent-cyan);
 }
 
+.nav-resume-btn::after {
+    display: none !important;
+}
+
+.nav-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue) !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.nav-resume-btn:hover {
+    color: var(--accent-cyan) !important;
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.6));
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -179,7 +195,7 @@ nav.scrolled {
 }
 
 /* Ensure all content sits above the canvas */
-nav, section, footer, .scroll-top {
+section, footer, .scroll-top {
     position: relative;
     z-index: 1;
 }
@@ -302,6 +318,16 @@ nav, section, footer, .scroll-top {
     color: var(--text-primary);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(77, 166, 255, 0.3);
+}
+
+.btn i {
+    margin-right: 8px;
+    font-size: 0.95em;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn:hover i {
+    transform: translateY(2px);
 }
 
 /* Hero image */
@@ -430,7 +456,6 @@ section {
    ABOUT SECTION
 ============================================ */
 #about {
-    background: var(--bg-secondary);
     max-width: 100%;
     padding: 6rem 5%;
 }
@@ -474,9 +499,10 @@ section {
     width: 100%;
     max-width: 1200px;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
     opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 .pyramid-grid-lines svg {
@@ -486,11 +512,11 @@ section {
 
 .tech-pyramid {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -498,8 +524,9 @@ section {
 .tech-row {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 18px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .tech-icon-card {
@@ -516,7 +543,9 @@ section {
     cursor: default;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    z-index: 3;
     backdrop-filter: blur(10px);
+    flex-shrink: 0;
 }
 
 .tech-icon-card i {
@@ -552,7 +581,34 @@ section {
 }
 
 /* Card responsive scaling */
-@media (max-width: 1200px) {
+@media (min-width: 1024px) and (max-width: 1249px) {
+    .tech-icon-card {
+        width: 85px;
+        height: 85px;
+        border-radius: 12px;
+        gap: 0.5rem;
+    }
+    .tech-icon-card i {
+        font-size: 1.8rem;
+    }
+    .tech-icon-card span {
+        font-size: 0.62rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .tech-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .tech-pyramid {
+        gap: 24px;
+        max-width: 100%;
+    }
     .tech-icon-card {
         width: 95px;
         height: 95px;
@@ -565,69 +621,44 @@ section {
     .tech-icon-card span {
         font-size: 0.68rem;
     }
-    .tech-row {
-        gap: 1.1rem;
-    }
-    .tech-pyramid {
-        gap: 1.1rem;
-    }
-}
-
-@media (max-width: 990px) {
-    .tech-row {
-        flex-wrap: wrap; /* allow wrapping on smaller screens */
-        max-width: 650px;
-        margin: 0 auto;
+    .pyramid-grid-lines {
+        opacity: 0.35;
     }
     .tech-pyramid-container {
         overflow: hidden;
     }
-    .pyramid-grid-lines {
-        display: none; /* hide wireframe grid lines when columns wrap */
-    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+    .tech-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .tech-pyramid {
+        gap: 30px;
+        max-width: 100%;
+    }
     .tech-icon-card {
-        width: 85px;
-        height: 85px;
+        width: 78px;
+        height: 78px;
         border-radius: 10px;
         gap: 0.4rem;
     }
     .tech-icon-card i {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     .tech-icon-card span {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
     }
-    .tech-row {
-        gap: 0.8rem;
-        max-width: 480px;
+    .pyramid-grid-lines {
+        opacity: 0.05;
     }
-    .tech-pyramid {
-        gap: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .tech-icon-card {
-        width: 78px;
-        height: 78px;
-        border-radius: 8px;
-        gap: 0.35rem;
-    }
-    .tech-icon-card i {
-        font-size: 1.4rem;
-    }
-    .tech-icon-card span {
-        font-size: 0.55rem;
-    }
-    .tech-row {
-        gap: 0.6rem;
-        max-width: 320px;
-    }
-    .tech-pyramid {
-        gap: 0.6rem;
+    .tech-pyramid-container {
+        overflow: hidden;
     }
 }
 
@@ -635,7 +666,6 @@ section {
    EXPERIENCE / TIMELINE
 ============================================ */
 #experience {
-    background: var(--bg-secondary);
     max-width: 100%;
     padding: 6rem 5%;
 }
@@ -741,9 +771,7 @@ section {
 /* ============================================
    PROJECTS SECTION
 ============================================ */
-#projects {
-    background: var(--bg-primary);
-}
+/* #projects background removed */
 
 .projects-grid {
     display: grid;
@@ -819,6 +847,23 @@ section {
     gap: 0.8rem;
 }
 
+.project-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.project-link.disabled {
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.project-link.disabled:hover {
+    color: var(--text-secondary);
+    gap: 0.5rem;
+}
+
 /* ============================================
    ACHIEVEMENTS
 ============================================ */
@@ -889,7 +934,7 @@ section {
    CODING PROFILES
 ============================================ */
 #coding-profiles {
-    background: var(--bg-primary);
+    /* Background removed to show particle canvas */
 }
 
 .profiles-row {
@@ -918,10 +963,14 @@ section {
     min-width: 120px;
 }
 
-.profile-badge i {
+.profile-badge i,
+.profile-badge-svg {
     font-size: 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
     color: var(--accent-blue);
-    transition: color 0.3s ease;
+    fill: currentColor;
+    transition: color 0.3s ease, filter 0.3s ease;
 }
 
 .profile-badge:hover {
@@ -931,15 +980,18 @@ section {
     color: var(--accent-cyan);
 }
 
-.profile-badge:hover i {
+.profile-badge:hover i,
+.profile-badge:hover .profile-badge-svg {
     color: var(--accent-cyan);
+    filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.5));
 }
+
+
 
 /* ============================================
    CERTIFICATIONS
 ============================================ */
 #certifications {
-    background: var(--bg-secondary);
     max-width: 100%;
     padding: 6rem 5%;
 }
@@ -993,9 +1045,7 @@ section {
 /* ============================================
    CONTACT SECTION
 ============================================ */
-#contact {
-    background: var(--bg-primary);
-}
+/* #contact background removed */
 
 .contact-content {
     max-width: 600px;
@@ -1070,7 +1120,6 @@ section {
    FOOTER
 ============================================ */
 footer {
-    background: var(--bg-primary);
     padding: 2.5rem 5%;
     text-align: center;
     border-top: 1px solid var(--card-border);
@@ -1187,6 +1236,8 @@ footer p {
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
+        position: relative;
+        z-index: 1001;
     }
 
     .nav-links {
@@ -1204,6 +1255,8 @@ footer p {
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         border-left: 1px solid var(--card-border);
+        overflow-y: auto;
+        z-index: 1000;
     }
 
     .nav-links.active {
